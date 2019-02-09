@@ -1,5 +1,6 @@
 package rodolfo.com.br.githubaac.di.modules
 
+import android.app.Application
 import android.arch.persistence.room.Room
 import android.content.Context
 import com.google.gson.Gson
@@ -16,13 +17,13 @@ import java.util.concurrent.Executor
 import java.util.concurrent.Executors
 import javax.inject.Singleton
 
-@Module
+@Module(includes = [ViewModelModule::class])
 class AppModule {
 
     @Provides
     @Singleton
-    fun provideDatabase(context:Context): MeuBancoDeDados{
-          return Room.databaseBuilder(context,MeuBancoDeDados::class.java,"github.db").build()
+    fun provideDatabase(application: Application): MeuBancoDeDados{
+          return Room.databaseBuilder(application,MeuBancoDeDados::class.java,"github.db").build()
     }
 
     @Provides

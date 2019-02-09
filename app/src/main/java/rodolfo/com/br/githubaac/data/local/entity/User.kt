@@ -9,7 +9,8 @@ import java.util.*
 data class User(
         @PrimaryKey
         var id : Int = 0,
-        var name :String = "",
+
+        var name : String = "",
         @SerializedName("avatar_url")
         var avatarURL : String = "",
         var login : String = "",
